@@ -66,7 +66,9 @@ public abstract class AbstractBancoMensagemImpl implements IBancoMensagem {
         Iterator entries = dicionario.entrySet().iterator();
         while (entries.hasNext()) {
             Map.Entry entry = (Map.Entry) entries.next();
-            List<AbstractMensagemImpl> msg = (List<AbstractMensagemImpl>)entry.getValue();
+            AbstractUsuarioImpl u = (AbstractUsuarioImpl)entry.getKey();
+            List<AbstractMensagemImpl> msg = dicionario.get(u);
+            //List<AbstractMensagemImpl> msg = (List<AbstractMensagemImpl>)entry.getValue();
             
             for (AbstractMensagemImpl abstractMensagemImpl : msg) {
                 if(abstractMensagemImpl.getDestinatario().getId() == id){
